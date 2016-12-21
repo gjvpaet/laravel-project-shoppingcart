@@ -15,7 +15,7 @@
                     @endforeach
                 </div>  
             @endif
-            <form action="" method="post">
+            <form action="{{ route('user.signup') }}" method="post">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email" class="form-control">

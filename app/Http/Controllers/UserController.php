@@ -4,6 +4,7 @@ namespace ShoppingCart\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use ShoppingCart\User;
 use ShoppingCart\Http\Requests;
 
@@ -27,6 +28,39 @@ class UserController extends Controller
         ]);
         $user->save();
 
-        return redirect()->route('product.index');
+        Auth::login($user);
+
+        return redirect()->route('user.profile');
+    }
+
+    public function getSignIn()
+    {
+        return view('user.signin');
+    }
+
+    public function postSignIn(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'email|required',
+            'password' => 'required|min:4'
+        ]);
+
+        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            return redirect()->route('user.profile');
+        } else {
+            return redirect()->back();
+        }
+    }
+    
+    public function getProfile()
+    {
+        return view('user.profile');
+    }
+
+    public function getLogout()
+    {
+        Auth::logout();
+
+        return redirect()->route('user.signin');
     }
 }
