@@ -5,86 +5,23 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="http://media.harrypotter.bloomsbury.com/rep/g/Harry%20Potter%20and%20the%20Philosopher's%20Stone%20%202.jpg" alt="..." class="image-responsive">
-                <div class="caption">
-                    <h3>Product Title</h3>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio odio quae odit ipsam ea, porro ipsa dignissimos iste mollitia? Optio, quod beatae. At voluptatibus quod, libero facere reprehenderit. Ipsum.</p>
-                    <div class="clearfix">
-                        <div class="pull-left price">$12</div>
-                        <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
+    @foreach($products->chunk(3) as $productChunk)
+        <div class="row">
+            @foreach($productChunk as $product)
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="{{ $product->image_path }}" alt="..." class="image-responsive">
+                        <div class="caption">
+                            <h3>{{ $product->title }}</h3>
+                            <p class="description">{{ $product->description }}</p>
+                            <div class="clearfix">
+                                <div class="pull-left price">${{ $product->price }}</div>
+                                <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="http://media.harrypotter.bloomsbury.com/rep/g/Harry%20Potter%20and%20the%20Philosopher's%20Stone%20%202.jpg" alt="..." class="image-responsive">
-                <div class="caption">
-                    <h3>Product Title</h3>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio odio quae odit ipsam ea, porro ipsa dignissimos iste mollitia? Optio, quod beatae. At voluptatibus quod, libero facere reprehenderit. Ipsum.</p>
-                    <div class="clearfix">
-                        <div class="pull-left price">$12</div>
-                        <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="http://media.harrypotter.bloomsbury.com/rep/g/Harry%20Potter%20and%20the%20Philosopher's%20Stone%20%202.jpg" alt="..." class="image-responsive">
-                <div class="caption">
-                    <h3>Product Title</h3>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio odio quae odit ipsam ea, porro ipsa dignissimos iste mollitia? Optio, quod beatae. At voluptatibus quod, libero facere reprehenderit. Ipsum.</p>
-                    <div class="clearfix">
-                        <div class="pull-left price">$12</div>
-                        <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="http://media.harrypotter.bloomsbury.com/rep/g/Harry%20Potter%20and%20the%20Philosopher's%20Stone%20%202.jpg" alt="..." class="image-responsive">
-                <div class="caption">
-                    <h3>Product Title</h3>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio odio quae odit ipsam ea, porro ipsa dignissimos iste mollitia? Optio, quod beatae. At voluptatibus quod, libero facere reprehenderit. Ipsum.</p>
-                    <div class="clearfix">
-                        <div class="pull-left price">$12</div>
-                        <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="http://media.harrypotter.bloomsbury.com/rep/g/Harry%20Potter%20and%20the%20Philosopher's%20Stone%20%202.jpg" alt="..." class="image-responsive">
-                <div class="caption">
-                    <h3>Product Title</h3>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio odio quae odit ipsam ea, porro ipsa dignissimos iste mollitia? Optio, quod beatae. At voluptatibus quod, libero facere reprehenderit. Ipsum.</p>
-                    <div class="clearfix">
-                        <div class="pull-left price">$12</div>
-                        <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="http://media.harrypotter.bloomsbury.com/rep/g/Harry%20Potter%20and%20the%20Philosopher's%20Stone%20%202.jpg" alt="..." class="image-responsive">
-                <div class="caption">
-                    <h3>Product Title</h3>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio odio quae odit ipsam ea, porro ipsa dignissimos iste mollitia? Optio, quod beatae. At voluptatibus quod, libero facere reprehenderit. Ipsum.</p>
-                    <div class="clearfix">
-                        <div class="pull-left price">$12</div>
-                        <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endforeach
 @endsection

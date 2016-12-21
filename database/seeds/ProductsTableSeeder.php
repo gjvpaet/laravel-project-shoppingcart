@@ -21,16 +21,16 @@ class ProductsTableSeeder extends Seeder
         $product->save();
 
         $product = new Product([
-            'image_path' => 'http://www.revelationz.net/images/book/gameofthrones3.jpg',
-            'title' => 'A Song of Ice and Fire - A Storm of Swords',
+            'image_path' => 'http://media.bloomsbury.com/rep/bj/9780747573609.jpg',
+            'title' => 'Harry Potter',
             'description' => 'No one is going to survive!',
             'price' => 10
         ]);
         $product->save();
 
         $product = new Product([
-            'image_path' => 'http://d.gr-assets.com/141111141641/33.jpg',
-            'title' => 'Lord of the Rings',
+            'image_path' => 'http://ecx.images-amazon.com/images/I/91ssa1Ggt8L.jpg',
+            'title' => 'Harry Potter',
             'description' => 'I found the movies to be better...',
             'price' => 20
         ]);
