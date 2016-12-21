@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace ShoppingCart\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use ShoppingCart\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller

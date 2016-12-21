@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace ShoppingCart\Exceptions;
 
 use Exception;
 use Illuminate\Validation\ValidationException;

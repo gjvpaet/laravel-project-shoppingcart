@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace ShoppingCart\Http\Controllers\Auth;
 
-use App\User;
+use ShoppingCart\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use ShoppingCart\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

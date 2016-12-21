@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace ShoppingCart;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
