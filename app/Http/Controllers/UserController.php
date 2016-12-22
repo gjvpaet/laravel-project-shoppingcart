@@ -2,9 +2,10 @@
 
 namespace ShoppingCart\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 
-use Auth;
+use ShoppingCart\Order;
 use ShoppingCart\User;
 use ShoppingCart\Http\Requests;
 
@@ -30,6 +31,12 @@ class UserController extends Controller
 
         Auth::login($user);
 
+        if ($request->session()->has('oldUrl')) {
+            $oldUrl = $request->session()->get('oldUrl');
+            $request->session()->forget('oldUrl');
+            return redirect($oldUrl);
+        }
+
         return redirect()->route('user.profile');
     }
 
@@ -46,6 +53,11 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            if ($request->session()->has('oldUrl')) {
+                $oldUrl = $request->session()->get('oldUrl');
+                $request->session()->forget('oldUrl');
+                return redirect($oldUrl);
+            }
             return redirect()->route('user.profile');
         } else {
             return redirect()->back();
@@ -54,7 +66,13 @@ class UserController extends Controller
     
     public function getProfile()
     {
-        return view('user.profile');
+        $orders = Auth::user()->orders;
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+
+        return view('user.profile', ['orders' => $orders]);
     }
 
     public function getLogout()

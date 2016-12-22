@@ -15,13 +15,13 @@
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input type="text" class="form-control" id="address" required>
+                            <input type="text" class="form-control" id="address" name="address" required>
                         </div>
                     </div>
                     <div class="col-xs-12">
