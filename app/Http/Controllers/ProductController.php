@@ -34,6 +34,36 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
+    public function getReduceByOne(Request $request, $id)
+    {
+        $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->reduceByOne($id);
+
+        if (count($cart->items) > 0) {
+            $request->session()->put('cart', $cart);
+        } else {
+            $request->session()->forget('cart');
+        }
+
+        return redirect()->route('product.shoppingCart');
+    }
+
+    public function getRemoveItem(Request $request, $id)
+    {
+        $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+
+        if (count($cart->items) > 0) {
+            $request->session()->put('cart', $cart);   
+        } else {
+            $request->session()->forget('cart');
+        }
+
+        return redirect()->route('product.shoppingCart');
+    }
+
     public function getCart(Request $request)
     {
         if (!$request->session()->has('cart')) {
